@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import requests
+import pandas as pd
 
 """
 Given dataset
@@ -20,7 +21,10 @@ app = Flask(__name__)
 def index():
     """ Return JSON for sliced dataframe """
 
-    diet = request.args.get('')
+    diet = request.args.get('diet')
+    timeline = request.args.get('timeline')
+
+    return str('{}: {}'.format(diet, timeline))
 
 
 
@@ -29,6 +33,13 @@ def test_request():
     parser.add_argument("diet")
     parser.add_argument("timeline", type =list)
     args = parser.parse_args()
+
+    data = requests.get('http://127.0.0.1:5000/')
+
+
+
+
+
 
 
 
